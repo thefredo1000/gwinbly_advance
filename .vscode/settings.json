@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "__split_buffer": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "__node_handle": "cpp",
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "type_traits": "cpp",
+        "__locale": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "unordered_map": "cpp"
+    },
+}
