@@ -10,10 +10,6 @@
 #include "bn_sprite_animate_actions.h"
 #include "bn_regular_bg_items_background.h"
 
-inline int convert_color(int color)
-{
-    return (color * 32) >> 8;
-}
 namespace
 {
     void sprite_scene()
@@ -29,7 +25,6 @@ namespace
 
         while (true)
         {
-
             if (bn::keypad::right_held())
             {
                 if (direction != 1)
@@ -37,6 +32,7 @@ namespace
                     action = bn::create_sprite_animate_action_forever(
                         gwimbly_sprite, 4, bn::sprite_items::gwimbly.tiles_item(), 2, 3, 2, 4);
                 }
+
                 gwimbly_sprite.set_position(gwimbly_sprite.x() + 1, 16);
                 direction = 1;
                 is_idle = false;
@@ -48,6 +44,7 @@ namespace
                     action = bn::create_sprite_animate_action_forever(
                         gwimbly_sprite, 4, bn::sprite_items::gwimbly.tiles_item(), 7, 8, 7, 9);
                 }
+
                 gwimbly_sprite.set_position(gwimbly_sprite.x() - 1, 16);
                 direction = 0;
                 is_idle = false;
@@ -67,8 +64,10 @@ namespace
                             gwimbly_sprite, 16, bn::sprite_items::gwimbly.tiles_item(), 5, 6);
                     }
                 }
+
                 is_idle = true;
             }
+
             action.update();
             bn::core::update();
         }
@@ -79,17 +78,10 @@ int main()
 {
     bn::core::init();
 
-    // TODO: Change to a good background
-    bn::bg_palettes::set_transparent_color(
-        bn::color(
-            convert_color(23),
-            convert_color(195),
-            convert_color(178)));
-
-    bn::regular_bg_ptr background =
-        bn::regular_bg_items::background.create_bg(8, 48);
+    bn::regular_bg_ptr background = bn::regular_bg_items::background.create_bg(8, 48);
 
     sprite_scene();
+
     while (true)
     {
         bn::core::update();
